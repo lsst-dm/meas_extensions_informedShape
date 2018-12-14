@@ -23,10 +23,9 @@
 
 #include "pybind11/pybind11.h"
 #include "pybind11/stl.h"
+#include "pybind11/eigen.h"
 
-#include "numpy/arrayobject.h"
 #include "ndarray/pybind11.h"
-#include "ndarray/eigen.h"
 
 #include "lsst/meas/extensions/informedShape/MomentsModel.h"
 
@@ -41,13 +40,7 @@ namespace informedShape {
 namespace {
 using PyMomentsModel = py::class_<MomentsModel, std::shared_ptr<MomentsModel>>;
 
-PYBIND11_PLUGIN(momentsModel) {
-    if (_import_array() < 0) {
-        PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import");
-        return nullptr;
-    }
-
-    py::module mod("momentsModel");
+PYBIND11_MODULE(momentsModel, mod) {
     PyMomentsModel cls(mod, "MomentsModel");
 
     cls.def(py::init<MomentsModel::Moments const &>(), "weights"_a);
@@ -64,7 +57,6 @@ PYBIND11_PLUGIN(momentsModel) {
     mod.def("testBetaXY", &testBetaXY, "tol"_a = DEFAULT_TEST_TOLERANCE);
     mod.def("testBetaY", &testBetaY, "tol"_a = DEFAULT_TEST_TOLERANCE);
 
-    return mod.ptr();
 }
 }  // namespace
 }  // namespace informedShape

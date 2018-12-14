@@ -22,10 +22,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_H
-#define LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_H
+#ifndef LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_MOMENTSMODEL_H
+#define LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_MOMENTSMODEL_H
 
-#include <Eigen/Dense>
+#include "Eigen/Dense"
 
 namespace lsst {
 namespace meas {
@@ -131,4 +131,4 @@ bool testBetaXY(double tol = DEFAULT_TEST_TOLERANCE);
 }  // namespace meas
 }  // namespace lsst
 
-#endif  // LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_H
+#endif  // LSST_MEAS_EXTENSIONS_INFORMEDSHAPE_MOMENTSMODEL_H

@@ -110,9 +110,8 @@ def measureMoments(image, W):
     image : 2D numpy array of floats
         This is the input postage stamp of a source for which the weighted moments are
         to be measured
-    W : 2D numpy array of floats
-        Array of floats that are used as weights when calculating moments on the input
-        image. Array must be the same shape image
+    W : 1D numpy array of floats
+        The parameters of an elliptically weighted Gaussian, scale, xpos, ypos, varx, varxy, vary
 
     Returns
     -------
@@ -124,7 +123,6 @@ def measureMoments(image, W):
     ------
     AssertionError: Raises if the input arrays are not the same shape
     """
-    assert image.shape == W.shape, "Input image and weight array must be the same shape"
 
     yInd, xInd = np.indices(image.shape)
     weightImage = makeGaussian(xInd, yInd, *W)

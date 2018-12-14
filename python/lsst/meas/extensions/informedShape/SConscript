@@ -1,6 +1,11 @@
 from lsst.sconsUtils import scripts
 scripts.BasicSConscript.pybind11(
-    ['momentsModel/momentsModel'
+    ['momentsModel/momentsModel',
+     'shapePrior',
+     'starGalaxyPrior',
+     'classificationPrior',
+     'defaultStarClassificationPrior',
+     'galaxyPrior',
     ],
     addUnderscore=False
 )
